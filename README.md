@@ -5,15 +5,12 @@
 ### Author: Dylan Corvidae
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [submission PR](https://github.com/Corvidae-FSJS/lab01/pull/1)
+
 
 #### Documentation
-* [api docs](http://xyz.com) (API servers)
-* [jsdoc](/docs) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
+* [jsdoc](/docs/index.html) (Server assignments)
+
 
 ### Setup
 #### `.env` requirements
