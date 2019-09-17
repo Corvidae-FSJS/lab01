@@ -109,40 +109,40 @@ describe('validator module', () => {
       expect(validator.getValidator('string')).toBe(validator.isString);
     });
     
-    it.skip('numbers', () => {
-      expect(validator.getValidator('number')).toBe(validator.isString);
+    it('numbers', () => {
+      expect(validator.getValidator('number')).toBe(validator.isNumber);
     });
 
-    it.skip('arrays', () => {
-      expect(validator.getValidator('array')).toBe(validator.isString);
+    it('arrays', () => {
+      expect(validator.getValidator('array')).toBe(validator.isArray);
     });
 
-    it.skip('objects', () => {
-      expect(validator.getValidator('object')).toBe(validator.isString);
+    it('objects', () => {
+      expect(validator.getValidator('object')).toBe(validator.isObject);
     });
 
-    it.skip('booleans', () => {
-      expect(validator.getValidator('boolean')).toBe(validator.isString);
+    it('booleans', () => {
+      expect(validator.getValidator('boolean')).toBe(validator.isBoolean);
     });
 
-    it.skip('functions', () => {
-      expect(validator.getValidator('function')).toBe(validator.isString);
+    it('functions', () => {
+      expect(validator.getValidator('function')).toBe(validator.isFunction);
     });
 
-    it.skip('array of strings', () => {
-      expect(validator.getValidator('strings')).toBe(validator.isString);
+    it('array of strings', () => {
+      expect(validator.getValidator('strings')).toBe(validator.isArrayOfStrings);
     });
 
-    it.skip('array of numbers', () => {
-      expect(validator.getValidator('numbers')).toBe(validator.isString);
+    it('array of numbers', () => {
+      expect(validator.getValidator('numbers')).toBe(validator.isArrayOfNumbers);
     });
 
-    it.skip('array of objects', () => {
-      expect(validator.getValidator('objects')).toBe(validator.isString);
+    it('array of objects', () => {
+      expect(validator.getValidator('objects')).toBe(validator.isArrayOfObjects);
     });
 
-    it.skip('array of booleans', () => {
-      expect(validator.getValidator('booleans')).toBe(validator.isString);
+    it('array of booleans', () => {
+      expect(validator.getValidator('booleans')).toBe(validator.isArrayOfBooleans);
     });
 
   });
