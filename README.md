@@ -9,7 +9,7 @@
 
 
 #### Documentation
-* [jsdoc](/docs/index.html) (Server assignments)
+* [jsdoc](https://corvidae-fsjs.github.io/lab01/) (Server assignments)
 
 
 ### Setup
