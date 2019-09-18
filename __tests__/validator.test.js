@@ -175,13 +175,17 @@ describe('validator module', () => {
 
   describe('coerces to number, throws error for array or object', () => {
     it('from strings', () => {
-      expect(validator.castToNumber(str)).toBe(str);
+      expect(() => {
+        validator.castToNumber(str);
+      }).toThrow(validator.TypeError);
     });
     it('from numbers', () => {
-      expect(validator.castToNumber(num)).toBe('1');
+      expect(validator.castToNumber(num)).toBe(1);
     });
     it('from boolean', () => {
-      expect(validator.castToNumber(bool)).toBe('false');
+      expect(() => {
+        validator.castToNumber(bool);
+      }).toThrow(validator.TypeError);
     });
     it('from object', () => {
       expect(() => {
