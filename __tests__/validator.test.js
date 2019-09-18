@@ -8,6 +8,7 @@ describe('validator module', () => {
   const obj = { x: 'y' };
   const func = () => {};
   const bool = false;
+  const date = new Date;
 
   describe('performs basic validation of', () => {
 
@@ -145,5 +146,55 @@ describe('validator module', () => {
       expect(validator.getValidator('booleans')).toBe(validator.isArrayOfBooleans);
     });
 
+  });
+
+  describe('coerces to string, throws error for array or object', () => {
+    it('from strings', () => {
+      expect(validator.castToString(str)).toBe(str);
+    });
+    it('from numbers', () => {
+      expect(validator.castToString(num)).toBe('1');
+    });
+    it('from boolean', () => {
+      expect(validator.castToString(bool)).toBe('false');
+    });
+    it('from object', () => {
+      expect(() => {
+        validator.castToString(obj);
+      }).toThrow(validator.TypeError);
+    });
+    it('from array', () => {
+      expect(() => {
+        validator.castToString(arr);
+      }).toThrow(validator.TypeError);
+    });
+    it.skip('from dates', () => {
+      expect(validator.castToString(date)).toMatch('${date}');
+    });
+  });
+
+  describe('coerces to number, throws error for array or object', () => {
+    it('from strings', () => {
+      expect(validator.castToNumber(str)).toBe(str);
+    });
+    it('from numbers', () => {
+      expect(validator.castToNumber(num)).toBe('1');
+    });
+    it('from boolean', () => {
+      expect(validator.castToNumber(bool)).toBe('false');
+    });
+    it('from object', () => {
+      expect(() => {
+        validator.castToNumber(obj);
+      }).toThrow(validator.TypeError);
+    });
+    it('from array', () => {
+      expect(() => {
+        validator.castToNumber(arr);
+      }).toThrow(validator.TypeError);
+    });
+    it.skip('from dates', () => {
+      expect(validator.castToNumber(date)).toMatch('${date}');
+    });
   });
 });
