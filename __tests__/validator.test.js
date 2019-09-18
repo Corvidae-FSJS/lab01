@@ -1,4 +1,5 @@
 const validator = require('../lib/validator.js');
+const CastError = require('../lib/Errors.js');
 
 describe('validator module', () => {
   
@@ -161,37 +162,39 @@ describe('validator module', () => {
     it('from object', () => {
       expect(() => {
         validator.castToString(obj);
-      }).toThrow(validator.TypeError);
+      }).toThrow(new CastError('number', obj.x));
     });
     it('from array', () => {
       expect(() => {
         validator.castToString(arr);
-      }).toThrow(validator.TypeError);
+      }).toThrow(new CastError);
     });
     it.skip('from dates', () => {
       expect(validator.castToString(date)).toMatch('${date}');
     });
   });
 
-  describe('coerces to number, throws error for array or object', () => {
+  describe('coerces to number, throws error for boolean, object, array, date', () => {
     it('from strings', () => {
       expect(validator.castToNumber(str)).toBe(str);
     });
     it('from numbers', () => {
-      expect(validator.castToNumber(num)).toBe('1');
+      expect(validator.castToNumber(num)).toBe(1);
     });
     it('from boolean', () => {
-      expect(validator.castToNumber(bool)).toBe('false');
+      expect(() => {
+        validator.castToNumber(bool);
+      }).toThrow(new CastError);
     });
     it('from object', () => {
       expect(() => {
         validator.castToNumber(obj);
-      }).toThrow(validator.TypeError);
+      }).toThrow(new CastError);
     });
     it('from array', () => {
       expect(() => {
         validator.castToNumber(arr);
-      }).toThrow(validator.TypeError);
+      }).toThrow(new CastError);
     });
     it.skip('from dates', () => {
       expect(validator.castToNumber(date)).toMatch('${date}');
