@@ -1,5 +1,5 @@
 /*eslint-disable-next-line*/
-const Schema = require('../lib/Schema');
+//const Schema = require('../lib/Schema');
 
 //describe('Schema', () => {
 
