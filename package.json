@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --verbose --coverage",
+    "test": "jest --verbose --passWithNoTests",
     "lint": "eslint '**/*.js'",
     "test:watch": "npm run test -- --watch",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
