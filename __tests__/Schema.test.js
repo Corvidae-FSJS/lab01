@@ -1,8 +1,10 @@
 /*eslint-disable-next-line*/
-//const Schema = require('../lib/Schema');
+const Schema = require('../lib/Schema');
 
-//describe('Schema', () => {
-
+describe('Schema', () => {
+  it('true', () => {
+    expect(true).toBe(true);
+  });
 
 //Marty's Demo
   // add a test schema
@@ -40,4 +42,4 @@
   // });
 
   // more test cases...
-//});
+});
