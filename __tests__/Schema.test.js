@@ -1,10 +1,58 @@
 /*eslint-disable-next-line*/
-const Schema = require('../lib/Schema');
+const SchemaValidator = require('../lib/Schema');
+const errors = require('../lib/Errors');
 
 describe('Schema', () => {
-  it('true', () => {
-    expect(true).toBe(true);
+
+  const personSchema = {
+    firstName: { type: 'string', require: true },
+    lastName: { type: 'string', required: true },
+    married: { type: 'boolean' },
+    kids: { type: 'number' },
+  };
+
+  const schemaValidator = new SchemaValidator(personSchema);
+
+  const validModel = {
+    firstName: 'Dylan',
+    lastName: 'Corvidae',
+    married: true,
+    kids: 1,
+  };
+
+  const semiValidModel = {
+    firstName: 'Dylan',
+    lastName: 'Corvidae',
+    married: 'true',
+    kids: 1,
+  };
+
+  const invalidModel = {
+    firstName: [12, 16, 20, 24],
+    lastName: 'Corvidae',
+    married: 'purple',
+    kids: 1,
+  };
+
+  it('validates a valid model', () => {
+    expect(schemaValidator.validate(validModel)).toEqual(validModel);
   });
+
+  it('validates a semivalid model', () => {
+    expect(schemaValidator.validate(semiValidModel)).toEqual(validModel);
+  });
+
+  it('throws on an invalid model', () => {
+    expect(() => {
+      schemaValidator.validate(invalidModel);
+    }).toThrow(errors.ModelError);
+  }); 
+});
+
+
+
+
+
 
 //Marty's Demo
   // add a test schema
@@ -42,4 +90,3 @@ describe('Schema', () => {
   // });
 
   // more test cases...
-});
