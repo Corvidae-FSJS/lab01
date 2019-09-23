@@ -47,7 +47,7 @@ describe('Schema', () => {
       schemaValidator.validate(invalidModel);
     }).toThrow(errors.ModelError);
   }); 
-});
+}); 
 
 
 
