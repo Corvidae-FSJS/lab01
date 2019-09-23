@@ -172,9 +172,9 @@ describe('validator module', () => {
         validator.castToString(arr);
       }).toThrow(validator.TypeError);
     });
-    it.skip('from dates', () => {
-      expect(validator.castToString(date)).toMatch(/2019/);
-    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToString(date)).toMatch(/2019/);
+    // }); 
   });
 
   describe('performs casting to number', () => {
@@ -204,9 +204,9 @@ describe('validator module', () => {
         validator.castToNumber(arr);
       }).toThrow(validator.TypeError);
     });
-    it.skip('from dates', () => {
-      expect(validator.castToNumber(date)).toMatch('date');
-    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToNumber(date)).toMatch('date');
+    // }); 
   });
   describe('performs casting to boolean', () => {
     describe('booleans', () => {
@@ -238,7 +238,7 @@ describe('validator module', () => {
       });
     });
   });
-  describe('performs casting to', () => {
+  describe('performs casting to date', () => {
     describe('dates', () => {
       expect(validator.castToDate(str5)).toMatch(/2019/);
     });
@@ -252,9 +252,9 @@ describe('validator module', () => {
         validator.castToDate(bool);
       }).toThrow(validator.TypeError);
     });
-    it.skip('from dates', () => {
-      expect(validator.castToDate(String(date))).toMatch(/2019/);
-    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToDate(String(date))).toMatch(/2019/);
+    // });
     it('from arrays', () => {
       expect(() => {
         validator.castToDate(arr);
