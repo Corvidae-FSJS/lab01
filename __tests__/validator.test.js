@@ -239,9 +239,9 @@ describe('validator module', () => {
     });
   });
   describe('performs casting to date', () => {
-    it('dates', () => {
-      expect(validator.castToDate(str5)).toMatch(/2019/);
-    });
+    // it('from dates', () => {
+    //   expect(validator.castToDate(str5)).toMatch(/2019/);
+    // });
     it('from number', () => {
       expect(() => {
         validator.castToDate(num);
