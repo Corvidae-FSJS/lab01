@@ -239,7 +239,7 @@ describe('validator module', () => {
     });
   });
   describe('performs casting to date', () => {
-    describe('dates', () => {
+    it('dates', () => {
       expect(validator.castToDate(str5)).toMatch(/2019/);
     });
     it('from number', () => {
