@@ -3,11 +3,16 @@ const validator = require('../lib/validator.js');
 describe('validator module', () => {
   
   const str = 'yes';
+  const str2 = '3';
+  const str3 = 'true';
+  const str4 = 'false';
+  //const str5 = String(new Date);
   const num = 1;
   const arr = ['a'];
   const obj = { x: 'y' };
   const func = () => {};
   const bool = false;
+  const date = new Date;
 
   describe('performs basic validation of', () => {
 
@@ -145,5 +150,120 @@ describe('validator module', () => {
       expect(validator.getValidator('booleans')).toBe(validator.isArrayOfBooleans);
     });
 
+  });
+
+  describe('performs casting to string', () => {
+    it('from strings', () => {
+      expect(validator.castToString(str)).toBe(str);
+    });
+    it('from numbers', () => {
+      expect(validator.castToString(num)).toBe('1');
+    });
+    it('from boolean', () => {
+      expect(validator.castToString(bool)).toBe('false');
+    });
+    it('from object', () => {
+      expect(() => {
+        validator.castToString(obj);
+      }).toThrow(validator.TypeError);
+    });
+    it('from array', () => {
+      expect(() => {
+        validator.castToString(arr);
+      }).toThrow(validator.TypeError);
+    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToString(date)).toMatch(/2019/);
+    // }); 
+  });
+
+  describe('performs casting to number', () => {
+    it('from non-number strings', () => {
+      expect(() => {
+        validator.castToNumber(str);
+      }).toThrow(validator.TypeError);
+    });
+    it('from number strings', () => {
+      expect(validator.castToNumber(str2)).toBe(3);
+    });
+    it('from numbers', () => {
+      expect(validator.castToNumber(num)).toBe(1);
+    });
+    it('from boolean', () => {
+      expect(() => {
+        validator.castToNumber(bool);
+      }).toThrow(validator.TypeError);
+    });
+    it('from object', () => {
+      expect(() => {
+        validator.castToNumber(obj);
+      }).toThrow(validator.TypeError);
+    });
+    it('from array', () => {
+      expect(() => {
+        validator.castToNumber(arr);
+      }).toThrow(validator.TypeError);
+    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToNumber(date)).toMatch('date');
+    // }); 
+  });
+  describe('performs casting to boolean', () => {
+    describe('booleans', () => {
+      it('from non-boolean string', () => {
+        expect(() => {
+          validator.castToBoolean(str);
+        }).toThrow(validator.TypeError);
+      });
+      it('from true string', () => {
+        expect(validator.castToBoolean(str3)).toBe(true);
+      });
+      it('from true string', () => {
+        expect(validator.castToBoolean(str4)).toBe(false);
+      });
+      it('from dates', () => {
+        expect(() => {
+          validator.castToBoolean(date);
+        }).toThrow(validator.TypeError);
+      });
+      it('from arrays', () => {
+        expect(() => {
+          validator.castToBoolean(arr);
+        }).toThrow(validator.TypeError);
+      });
+      it('from objects', () => {
+        expect(() => {
+          validator.castToBoolean(obj);
+        }).toThrow(validator.TypeError);
+      });
+    });
+  });
+  describe('performs casting to date', () => {
+    // it('from dates', () => {
+    //   expect(validator.castToDate(str5)).toMatch(/2019/);
+    // });
+    it('from number', () => {
+      expect(() => {
+        validator.castToDate(num);
+      }).toThrow(validator.TypeError);
+    });
+    it('from boolean', () => {
+      expect(() => {
+        validator.castToDate(bool);
+      }).toThrow(validator.TypeError);
+    });
+    // it.skip('from dates', () => {
+    //   expect(validator.castToDate(String(date))).toMatch(/2019/);
+    // });
+    it('from arrays', () => {
+      expect(() => {
+        validator.castToDate(arr);
+      }).toThrow(validator.TypeError);
+    });
+    it('from objects', () => {
+      expect(() => {
+        validator.castToDate(obj);
+      }).toThrow(validator.TypeError);
+    });
   });
 });
